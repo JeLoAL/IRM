@@ -1,12 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IRM</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  
+    <title>Test</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico.png">
+  
+    <!-- Favicons -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Test</title>
 </head>
-<body>
-    
+<body style="font-family: Calibri; font-size: 11px;">
+    <div id="mainInput" class="container">
+        <div class="row">
+            <div class="col-md">
+                <div class="card mt-3">
+                    <div class="card-header">Test</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <div class="form-floating mb-3 mt-3">
+                                    <!-- <select id="emailType" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                    </select> -->
+                                    <input id="emailType" class="emailType form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+                                    <datalist id="datalistOptions">
+                                        <option value="ETAC EMAIL NOTIFICATION">
+                                        <option value="PASSWORD EMAIL NOTIFICATION">
+                                        <option value="Seattle">
+                                        <option value="Los Angeles">
+                                        <option value="Chicago">
+                                        <option value="">
+                                    </datalist>
+                                    <label for="floatingInput">Email Type</label>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6"> 
+                                <div class="form-floating mb-3 mt-3">
+                                    <input type="text" class="impactedUser form-control">
+                                    <label for="floatingInput">Impacted User</label>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <div class="form-floating mb-3 mt-3">
+                                    <input type="text"  class="ticketNumber form-control" >
+                                    <label for="floatingInput">Ticket Number</label>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <div class="form-floating mb-3 mt-3">
+                                    <input type="text"  class="agentName form-control" >
+                                    <label for="floatingInput">Agent Name</label>
+                                </div>
+                            </div>  
+                        </div>
+                        <!-- ETAC Email -->
+                        <div id="etacReq" style="display: none;">
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <div class="form-floating mb-3 mt-3">
+                                        <input class="assignmentGroup form-control" list="assignmentGroupOptions" id="exampleDataList" placeholder="Type to search...">
+                                        <datalist id="assignmentGroupOptions">
+                                            <option value="SNOW-AM-O365">
+                                            <option value="SNOW-AM-HR&Legal">
+                                            <option value="">
+                                        </datalist>
+                                        <label for="floatingInput">Assignment Group</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Password Email -->
+                        <div id="passwordReq" style="display: none;">
+                            <div class="row">
+                                <div class="form-group col-sm-3">
+                                    <div class="form-floating mb-3 mt-3">
+                                        <input class="accountType form-control" list="accountTypeOption" id="exampleDataList" placeholder="Type to search...">
+                                        <datalist id="accountTypeOption">
+                                            <option value="SAP SRM">
+                                            <option value="SAP ReadSoft">
+                                            <option value="SAP ECC">
+                                            <option value="VDI">
+                                            <option value="Cloud PC">
+                                            <option value="ERT">
+                                        </datalist>
+                                        <label for="floatingInput">Account Type</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <div class="form-floating mb-3 mt-3">
+                                        <input class="credential form-control" list="credentialOption" id="exampleDataList" placeholder="Type to search...">
+                                        <datalist id="credentialOption">
+                                            <option value="Username">
+                                            <option value="Password">
+                                            <option value=""></option>
+                                        </datalist>
+                                        <label for="floatingInput">Credential</label>
+                                    </div>
+                                </div>
+                                <div id="showPasswordInput" class="form-group col-sm-3" style="display: none;">
+                                    <div class="form-floating mb-3 mt-3">
+                                        <input type="text"  class="password form-control" >
+                                        <label for="floatingInput">Password</label>
+                                    </div>
+                                </div> 
+                                <div id="showUsernameInput" class="form-group col-sm-3" style="display: none;">
+                                    <div class="form-floating mb-3 mt-3">
+                                        <input type="text"  class="username form-control" >
+                                        <label for="floatingInput">Username</label>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <div style="text-align: right;">
+                            <img onclick="CopyToClipboard()"  src="assets/img/clipboard.svg" alt="copy">
+                        </div>
+                        <div id="copyText" class="generatedEmail"></div>
+                    </div>
+                </div>
+            </div>
+          </div>
+<script>
+    function CopyToClipboard()
+    {
+        var r = document.createRange();
+        r.selectNode(document.getElementById("copyText"));
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(r);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+
+        alert("Copied");
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="assets/jquery/jquery.js"></script>
+<script src="assets/js/irm.js"></script>
+<script src="assets/js/js.js"></script>
 </body>
 </html>
