@@ -8,7 +8,7 @@ $(document).ready(function(){
         const impactedUser = $('.impactedUser').val()
         const ticketNumber = $('.ticketNumber').val()
         const agentName = $('.agentName').val()
-
+ 
         $('#etacReq').hide()
         $('#passwordReq').hide()
 
